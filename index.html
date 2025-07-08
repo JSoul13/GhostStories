@@ -1,80 +1,110 @@
-<form id="patient-registration" style="max-width: 480px; margin: auto; background: #121224; padding: 2rem; border-radius: 12px; box-shadow: 0 0 30px #00fff7; font-family: 'Orbitron', sans-serif; color: #00fff7;">
-<h2 style="text-align: center; font-weight: 700; font-size: 2rem; text-shadow: 0 0 8px #00fff7; margin-bottom: 1.5rem;">Patient Registration</h2>
-
-<label for="firstName" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">First Name *</label>
-<input id="firstName" name="firstName" type="text" required autocomplete="given-name" style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="lastName" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Last Name *</label>
-<input id="lastName" name="lastName" type="text" required autocomplete="family-name" style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="dob" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Date of Birth *</label>
-<input id="dob" name="dob" type="date" required max="" style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="phone" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Phone Number *</label>
-<input id="phone" name="phone" type="tel" required placeholder="+1 555 123 4567" style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="emergencyContact" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Emergency Contact (Name & Relationship) *</label>
-<input id="emergencyContact" name="emergencyContact" type="text" required style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="email" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Email Address *</label>
-<input id="email" name="email" type="email" required autocomplete="email" style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="insuranceProvider" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Insurance Provider *</label>
-<select id="insuranceProvider" name="insuranceProvider" required style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;">
-<option value="" disabled selected>Select your provider</option>
-<option value="nyship">NYShip</option>
-<option value="bcbs">BCBS</option>
-<option value="emr">EMR</option>
-<option value="cigna">Cigna</option>
-<option value="aetna">Aetna</option>
-</select>
-
-<label for="memberId" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Member ID / Policy Number *</label>
-<input id="memberId" name="memberId" type="text" required style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="groupNumber" style="display: block; margin-top: 1rem; font-size: 0.9rem; letter-spacing: 0.05em;">Group Number (optional)</label>
-<input id="groupNumber" name="groupNumber" type="text" style="width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; font-size: 1rem; border: 2px solid #00fff7; border-radius: 6px; background: #1a1a2e; color: #00fff7; transition: border-color 0.3s ease;" />
-
-<label for="travelLuxury" style="display: flex; align-items: center; margin-top: 1rem; font-size: 0.95rem; cursor: pointer; user-select: none;">
-<input type="checkbox" id="travelLuxury" name="travelLuxury" style="width: auto; margin-right: 0.6rem; vertical-align: middle; accent-color: #ff00ff; cursor: pointer;" />
-Would you travel to a luxury treatment facility if given the opportunity?
-</label>
-
-<button type="submit" style="margin-top: 2rem; padding: 0.8rem; font-size: 1.1rem; font-weight: 700; color: #121224; background: linear-gradient(90deg, #ff00ff, #00fff7); border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 0 15px #ff00ff; transition: background 0.4s ease;">Register</button>
-</form>
-
-<script>
-// Set max date for DOB to today
-document.getElementById('dob').max = new Date().toISOString().split('T')[0];
-
-const form = document.getElementById('patient-registration');
-
-form.addEventListener('submit', (e) => {
-e.preventDefault();
-
-if (!form.checkValidity()) {
-  alert('Please fill out all required fields correctly.');
-  return;
-}
-
-// Collect form data
-const formData = {
-  firstName: form.firstName.value.trim(),
-  lastName: form.lastName.value.trim(),
-  dob: form.dob.value,
-  phone: form.phone.value.trim(),
-  emergencyContact: form.emergencyContact.value.trim(),
-  email: form.email.value.trim(),
-  insuranceProvider: form.insuranceProvider.value,
-  memberId: form.memberId.value.trim(),
-  groupNumber: form.groupNumber.value.trim(),
-  travelLuxury: form.travelLuxury.checked,
-};
-
-console.log('Patient Registration Data:', formData);
-
-alert('Registration submitted successfully!');
-
-form.reset();
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treatment Connect</title>
+    <style>
+        /* DARK BLUE/GRAY CYBERPUNK THEME */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a1a2f;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #001529, #003366);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00f5d4;
+        }
+        
+        .form-container {
+            background-color: #1a2a3a;
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.3);
+        }
+        
+        .glow-input {
+            background-color: #2a3a4a;
+            border: 1px solid #00f5d4;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        button {
+            background-color: #00f5d4;
+            color: #001529;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            box-shadow: 0 0 10px #00f5d4;
+        }
+        
+        .insurance-logos {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .insurance-logos img {
+            height: 40px;
+            filter: grayscale(100%) brightness(150%);
+            transition: all 0.3s;
+        }
+        
+        .insurance-logos img:hover {
+            filter: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>FIND TREATMENT</h1>
+        <p>AI-Powered Facility Matching</p>
+    </div>
+    
+    <div class="form-container">
+        <h2>Patient Information</h2>
+        
+        <form>
+            <input type="text" class="glow-input" placeholder="Full Name" required>
+            <input type="date" class="glow-input" placeholder="Date of Birth">
+            <input type="tel" class="glow-input" placeholder="Phone Number">
+            
+            <h3>Insurance Provider</h3>
+            <select class="glow-input">
+                <option value="">Select Insurance</option>
+                <option value="umr">UMR</option>
+                <option value="cigna">Cigna</option>
+                <option value="aetna">Aetna</option>
+                <option value="bcbs">Blue Cross Blue Shield</option>
+            </select>
+            
+            <h3>Clinical Needs</h3>
+            <textarea class="glow-input" rows="4" placeholder="Briefly describe treatment needs..."></textarea>
+            
+            <button type="submit">FIND FACILITIES</button>
+        </form>
+        
+        <div class="insurance-logos">
+            <img src="https://placeholder.com/umr-logo" alt="UMR">
+            <img src="https://placeholder.com/cigna-logo" alt="Cigna">
+            <img src="https://placeholder.com/aetna-logo" alt="Aetna">
+            <img src="https://placeholder.com/bcbs-logo" alt="BCBS">
+        </div>
+    </div>
+</body>
+</html>
