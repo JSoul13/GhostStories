@@ -1,1 +1,5 @@
-["portal-index.html",  "hologram-form.js", "umr-verify.js"]
+// Dynamic verification
+function verifyInsurance(provider) {
+  showHologramScan(); // Triggers blue laser scan animation
+  checkUMRDatabase(); // Your API endpoint here
+}
