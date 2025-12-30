@@ -1,220 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cyberpunk Treatment Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-    }
-    body, html {
-      margin: 0; padding: 0;
-      height: 100%;
-      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-      font-family: 'Orbitron', sans-serif;
-      color: #00fff7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    header {
-      width: 100%;
-      padding: 1rem 2rem;
-      background: #121224;
-      box-shadow: 0 0 15px #00fff7;
-      text-align: center;
-      font-size: 1.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      user-select: none;
-    }
-
-    main {
-      flex: 1;
-      width: 100%;
-      max-width: 480px;
-      padding: 2rem;
-      margin-top: 2rem;
-      background: #121224;
-      border-radius: 12px;
-      box-shadow: 0 0 30px #00fff7;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      font-size: 2rem;
-      text-shadow: 0 0 8px #00fff7;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-    }
-
-    input, select {
-      margin-top: 0.3rem;
-      padding: 0.6rem 0.8rem;
-      font-size: 1rem;
-      border: 2px solid #00fff7;
-      border-radius: 6px;
-      background: #1a1a2e;
-      color: #00fff7;
-      transition: border-color 0.3s ease;
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: #ff00ff;
-      box-shadow: 0 0 8px #ff00ff;
-    }
-
-    input[type="checkbox"] {
-      width: auto;
-      margin-right: 0.6rem;
-      vertical-align: middle;
-      accent-color: #ff00ff;
-      cursor: pointer;
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    button {
-      margin-top: 2rem;
-      padding: 0.8rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #121224;
-      background: linear-gradient(90deg, #ff00ff, #00fff7);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ff00ff;
-      transition: background 0.4s ease;
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #00fff7, #ff00ff);
-      box-shadow: 0 0 25px #00fff7;
-    }
-
-    /* Responsive */
-    @media (max-width: 520px) {
-      main {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    Cyberpunk Treatment Platform
-  </header>
-
-  <main>
-    <h1>Patient Registration</h1>
-    <form id="patient-registration" novalidate>
-      <label for="firstName">First Name *</label>
-      <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
-
-      <label for="lastName">Last Name *</label>
-      <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
-
-      <label for="dob">Date of Birth *</label>
-      <input id="dob" name="dob" type="date" required max="" />
-
-      <label for="phone">Phone Number *</label>
-      <input id="phone" name="phone" type="tel" required placeholder="+1 555 123 4567" />
-
-      <label for="emergencyContact">Emergency Contact (Name & Relationship) *</label>
-      <input id="emergencyContact" name="emergencyContact" type="text" required />
-
-      <label for="email">Email Address *</label>
-      <input id="email" name="email" type="email" required autocomplete="email" />
-
-      <label for="insuranceProvider">Insurance Provider *</label>
-      <select id="insuranceProvider" name="insuranceProvider" required>
-        <option value="" disabled selected>Select your provider</option>
-        <option value="nyship">NYShip</option>
-        <option value="bcbs">BCBS</option>
-        <option value="emr">EMR</option>
-        <option value="cigna">Cigna</option>
-        <option value="aetna">Aetna</option>
-      </select>
-
-      <label for="memberId">Member ID / Policy Number *</label>
-      <input id="memberId" name="memberId" type="text" required />
-
-      <label for="groupNumber">Group Number (optional)</label>
-      <input id="groupNumber" name="groupNumber" type="text" />
-
-      <label class="checkbox-label" for="travelLuxury">
-        <input type="checkbox" id="travelLuxury" name="travelLuxury" />
-        Would you travel to a luxury treatment facility if given the opportunity?
-      </label>
-
-      <button type="submit">Register</button>
-    </form>
-  </main>
-
-  <script>
-    // Set max date for DOB to today
-    document.getElementById('dob').max = new Date().toISOString().split('T')[0];
-
-    const form = document.getElementById('patient-registration');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      if (!form.checkValidity()) {
-        alert('Please fill out all required fields correctly.');
-        return;
-      }
-
-      // Collect form data
-      const formData = {
-        firstName: form.firstName.value.trim(),
-        lastName: form.lastName.value.trim(),
-        dob: form.dob.value,
-        phone: form.phone.value.trim(),
-        emergencyContact: form.emergencyContact.value.trim(),
-        email: form.email.value.trim(),
-        insuranceProvider: form.insuranceProvider.value,
-        memberId: form.memberId.value.trim(),
-        groupNumber: form.groupNumber.value.trim(),
-        travelLuxury: form.travelLuxury.checked,
-      };
-
-      console.log('Patient Registration Data:', formData);
-
-      // TODO: Integrate with Firebase or backend API here
-
-      alert('Registration submitted successfully!');
-
-      form.reset();
-    });
-  </script>
+    <div class="loading" id="loading">Loading preview...</div>
+    <div class="container">
+        <iframe 
+            src="https://guardianshield.abacusai.app" 
+            title="Website Preview"
+            id="previewFrame"
+            onload="document.getElementById('loading').classList.add('hidden')"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <script>
+        // Additional security: Hide referrer information
+        const meta = document.createElement('meta');
+        meta.name = 'referrer';
+        meta.content = 'no-referrer';
+        document.head.appendChild(meta);
+        
+        // Handle iframe loading errors
+        document.getElementById('previewFrame').onerror = function() {
+            document.getElementById('loading').textContent = 'Failed to load preview. Please try again later.';
+        };
+        
+        // Optional: Add message to prevent direct access to iframe content
+        window.addEventListener('message', function(e) {
+            // Block any attempts to access parent window
+            if (e.data === 'getOrigin') {
+                e.source.postMessage('blocked', '*');
+            }
+        }, false);
+    </script>
 </body>
 </html>
